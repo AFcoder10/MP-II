@@ -92,6 +92,6 @@ domReady().then(() => {
   appendLoading();
 });
 window.onmessage = (ev) => {
+  console.log("Preload received message:", ev.data);
   ev.data.payload === "removeLoading" && removeLoading();
 };
-setTimeout(removeLoading, 4999);

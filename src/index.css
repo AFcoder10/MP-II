@@ -11,8 +11,8 @@ html, body{
     --secondary-color: #378CE7;
     --ternary-color: #67C6E3;
     --quaternary-color: #264568;
-    font-family: "SF Pro Text Semibold";
-    /* font-family: 'Poppins', sans-serif ; */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    /* heading / title font: Plus Jakarta Sans */
 }
 
 

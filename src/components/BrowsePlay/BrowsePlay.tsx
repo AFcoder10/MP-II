@@ -1,7 +1,6 @@
 import "./BrowsePlay.css";
 import "../SearchBar/SearchBar.css";
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll } from "framer-motion";
 import refresh from "../../assets/refresh.svg";
 import itemicon from "../../assets/music-bars-svgrepo-com (2).svg";
 import plus from "../../assets/align-bottom-svgrepo-com.svg";
@@ -28,7 +27,7 @@ export default function BrowsePlay({
   changePlaylist,
   setPlaylistData,
 }: data) {
-  const ref = useRef(null);
+  const _ref = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
     url: "",
@@ -42,7 +41,7 @@ export default function BrowsePlay({
   useEffect(() => {
     console.log("LISTENER FOR DOWNLOADED WAS ADDED");
     let count = 0;
-    function handleDownloaded(event: Electron.Event, arg: any) {
+    function handleDownloaded(_event: Electron.Event, _arg: any) {
       setTimeout(() => {
         if (recievedSignal === false) {
           // console.log("Downloaded signal received:", event);
@@ -89,7 +88,7 @@ export default function BrowsePlay({
     console.log(formData);
   };
 
-  const { scrollXProgress } = useScroll({ container: ref });
+  // scroll tracking removed
   // console.log(data)
 
   async function downloadPlaylist(
@@ -233,6 +232,14 @@ export default function BrowsePlay({
               ></input>
             </div>
           </li>
+
+          {/* Empty state */}
+          {filteredPlaylist.length === 0 && (
+            <li className="empty-state">
+              <p className="empty-title">No playlists yet</p>
+              <p className="empty-sub">Add a YouTube URL above to get started ↑</p>
+            </li>
+          )}
 
           {/* User Playlist Cards */}
           {filteredPlaylist.map((item, index) => (
