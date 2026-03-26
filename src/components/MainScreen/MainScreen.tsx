@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./MainScreen.css";
 import Card from "../Card/Card";
 import Menu from "../Menu/Menu";
-import ScreenWrapper from "../ScreenWrapper/ScreenWrapper";
 import { AnimatePresence } from "framer-motion";
 import CustomPlayer from "../CustomPlayer/CustomPlayer";
 import BrowsePlay, { playlist } from "../BrowsePlay/BrowsePlay";
@@ -62,13 +61,13 @@ function MainScreen({audioRef}:mainScreenProps) {
     // }
     switch (target){
       case 'Browse':
-        return <BrowsePlay data={playlistData} changeScreen={setActive} changePlaylist={setCurrentPlaylist} setPlaylistData={setPlaylistData}/>
+        return <BrowsePlay key="Browse" data={playlistData} changeScreen={setActive} changePlaylist={setCurrentPlaylist} setPlaylistData={setPlaylistData}/>
 
       case 'Player':
-        return <CustomPlayer audioRef={audioRef} currentPlaylist={currentPlaylist}/>
+        return <CustomPlayer key="Player" audioRef={audioRef} currentPlaylist={currentPlaylist}/>
 
        case 'Queue':
-        return <Queue/>
+        return <Queue key="Queue"/>
         // i have removed (data={currentPlaylist}) from above line
     }
   }

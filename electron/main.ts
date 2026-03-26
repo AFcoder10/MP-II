@@ -73,29 +73,27 @@ app.on('activate', () => {
 
 
 function startApp(){
-
-  // // Creating the protocol for allowing mp3 files to be accessed securely
-  // setUpFileProtocol("cprotocol:/")
-  // Create/Verify the existence of the data folders
+  console.log("Starting App Initialization...");
   createDataFolder()
+  console.log("Data folders verified.");
 
-
-  //Create the actual window
   createWindow()
+  console.log("Window created.");
 
-  //functions requiring window must be called after creating the damn window (who would have thought?)
   setUpDirectoryManager(win)
+  console.log("Directory manager set up.");
   
   limitListeners()
+  console.log("Listeners limited.");
 
-  //Opening dev tools
-  win?.webContents.openDevTools({mode:"detach"})
+  // Opening dev tools in detached mode can sometimes cause hangs on some systems
+  // win?.webContents.openDevTools({mode:"detach"})
 
-  //attaching shortcuts
   setUpShortcut("Alt+M", win)
+  console.log("Shortcut registered.");
 
-  //set up mouse listeners (this ensures that the mouse events are ignore if its not within the application)
   setUpMouseListeners(win)
+  console.log("Mouse listeners set up. Initialization complete.");
 }
 
 

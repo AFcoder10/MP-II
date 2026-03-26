@@ -235,12 +235,18 @@ electron.app.on("activate", () => {
   }
 });
 function startApp() {
+  console.log("Starting App Initialization...");
   createDataFolder();
+  console.log("Data folders verified.");
   createWindow();
+  console.log("Window created.");
   setUpDirectoryManager(win);
+  console.log("Directory manager set up.");
   limitListeners();
-  win == null ? void 0 : win.webContents.openDevTools({ mode: "detach" });
+  console.log("Listeners limited.");
   setUpShortcut("Alt+M", win);
+  console.log("Shortcut registered.");
   setUpMouseListeners(win);
+  console.log("Mouse listeners set up. Initialization complete.");
 }
 electron.app.whenReady().then(startApp);
